@@ -2,7 +2,7 @@ name: 'Swift Coverage Report'
 description: 'Report SPM test coverage summary and lcov file'
 author: 'Maxime Epain'
 branding:
-    icon: 'check-circle'  
+    icon: 'check-circle'
     color: 'orange'
 inputs:
     output-file:
