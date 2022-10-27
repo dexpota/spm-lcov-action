@@ -14,5 +14,5 @@ inputs:
         required: false
         default: 'lcov'
 runs:
-    using: 'node12'
+    using: 'node16'
     main: 'index.js'
