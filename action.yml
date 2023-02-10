@@ -17,6 +17,14 @@ inputs:
         description: 'The input instrumentation profile file'
         required: false
         default: '.build/debug/codecov/default.profdata'
+    is-spm:
+        description: 'Is the current porject an SPM project?'
+        type: boolean
+        required: false
+        default: true
+    test-binary:
+        description: 'The test binary'
+        required: false
 runs:
     using: 'node16'
     main: 'index.js'
