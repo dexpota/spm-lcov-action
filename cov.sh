@@ -28,10 +28,9 @@ while :; do
         -o|--output) OUTPUT_FILE=$2
         shift
         ;;
-		-i|--instr-profile) INSTR_PROFILE=$2
-		shift
-		;;
-        *) break
+        -i|--instr-profile) INSTR_PROFILE=$2
+        shift
+        ;;
     esac
     shift
 done
