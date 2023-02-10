@@ -13,6 +13,10 @@ inputs:
         description: 'The output file format'
         required: false
         default: 'lcov'
+    instr-profile:
+        description: 'The input instrumentation profile file'
+        required: false
+        default: '.build/debug/codecov/default.profdata'
 runs:
     using: 'node16'
     main: 'index.js'

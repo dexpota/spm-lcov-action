@@ -4,7 +4,8 @@ const exec = require('@actions/exec')
 async function main() {
     const format = core.getInput('file-format')
     const output = core.getInput('output-file')
-    await exec.exec(`${__dirname}/cov.sh -f ${format} -o ${output}`)
+    const instr_profile = core.getInput('instr-profile')
+    await exec.exec(`${__dirname}/cov.sh -f ${format} -o ${output} -i ${instr_profile}`)
 }
 
 main().catch(err => core.setFailed(err.message))
