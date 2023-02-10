@@ -1,9 +1,18 @@
 #!/bin/sh -l
 
 PATH=$PATH
+
+
+# Find the test binary for SPM projects.
 BIN_PATH="$(swift build --show-bin-path)"
 XCTEST_PATH="$(find ${BIN_PATH} -name '*.xctest')"
 COV_BIN=$XCTEST_PATH
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    f="$(basename $XCTEST_PATH .xctest)"
+    COV_BIN="${COV_BIN}/Contents/MacOS/$f"
+    PATH="/usr/local/opt/llvm/bin:$PATH"​
+fi
 
 INSTR_PROFILE=.build/debug/codecov/default.profdata
 IGNORE_FILENAME_REGEX=".build|Tests"
@@ -27,11 +36,6 @@ while :; do
     shift
 done
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    f="$(basename $XCTEST_PATH .xctest)"
-    COV_BIN="${COV_BIN}/Contents/MacOS/$f"
-    PATH="/usr/local/opt/llvm/bin:$PATH"​
-fi
 
 mkdir -p "$(dirname "$OUTPUT_FILE")"
 
